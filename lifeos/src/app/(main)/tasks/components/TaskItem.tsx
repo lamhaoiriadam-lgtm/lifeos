@@ -7,7 +7,7 @@ import type { Task, TaskPriority, TaskStatus } from "@/lib/types";
 import { Checkbox } from "@/components/ui/checkbox";
 import { format } from "date-fns";
 import { useToast } from "@/hooks/use-toast";
-import { MoreHorizontal, Edit, Trash2 } from "lucide-react";
+import { MoveHorizontal as MoreHorizontal, CreditCard as Edit, Trash2 } from "lucide-react";
 import {
     DropdownMenu,
     DropdownMenuContent,

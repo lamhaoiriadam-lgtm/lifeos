@@ -6,6 +6,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
+import type { TransactionCategory } from "@/lib/types";
 import {
   Form,
   FormControl,
@@ -76,9 +77,13 @@ export default function TransactionForm({ transaction, onFinished }: Transaction
 
   function onSubmit(values: z.infer<typeof transactionSchema>) {
     const transactionData: Transaction = {
-      ...values,
       id: transaction?.id || uuidv4(),
       createdAt: transaction?.createdAt || new Date().toISOString(),
+      type: values.type,
+      amount: values.amount,
+      category: values.category as TransactionCategory,
+      date: values.date,
+      note: values.note,
     };
 
     dispatch({ type: transaction ? "UPDATE_TRANSACTION" : "ADD_TRANSACTION", payload: transactionData });

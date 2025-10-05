@@ -3,7 +3,7 @@
 
 import { useAppContext } from "@/context/AppContext";
 import { cn } from "@/lib/utils";
-import type { Task, TaskPriority } from "@/lib/types";
+import type { Task, TaskPriority, TaskStatus } from "@/lib/types";
 import { Checkbox } from "@/components/ui/checkbox";
 import { format } from "date-fns";
 import { useToast } from "@/hooks/use-toast";
@@ -31,8 +31,8 @@ export default function TaskItem({ task }: TaskItemProps) {
   const { toast } = useToast();
 
   const handleToggleStatus = () => {
-    const newStatus = task.status === "done" ? "inProgress" : "done";
-    const updatedTask = {
+    const newStatus: TaskStatus = task.status === "done" ? "inProgress" : "done";
+    const updatedTask: Task = {
       ...task,
       status: newStatus,
       completedAt: newStatus === 'done' ? new Date().toISOString() : null,
